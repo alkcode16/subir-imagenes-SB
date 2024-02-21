@@ -10,6 +10,6 @@ public class DemoApplication {
 		SpringApplication.run(DemoApplication.class, args);
 	}
 
-	//Este es el bueno xdxdxd
+	//Proyecto para guardado de imagenes
 
 }
