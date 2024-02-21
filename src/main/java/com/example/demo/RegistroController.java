@@ -5,15 +5,20 @@ import java.io.File;
 import com.google.gson.Gson;
 import org.apache.commons.io.FileUtils;
 import org.apache.commons.io.FilenameUtils;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.util.MultiValueMap;
+import java.nio.file.Path;
 import org.springframework.util.StringUtils;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 
 import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Paths;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 @RestController
@@ -131,39 +136,28 @@ public class RegistroController {
 
     //Guardar multiples archivos
 
-    @CrossOrigin(origins = "*")
+    //@CrossOrigin(origins = "*")
     @PostMapping("/bolsatrabajo")
-    // @ResponseBody
     
-    public void saveBolsaTabajo(@RequestParam("registro") String strRegistro, @RequestParam("fichero") MultiValueMap<String, MultipartFile> multiFileMap) throws IOException{
-        //public void saveBolsaTabajo(@RequestBody Registro registro, @RequestParam("fichero") MultiValueMap<String, MultipartFile> multiFileMap) throws IOException{
-        //public saveBolsaTabajo(@RequestBody Bolsa bolsa){
+    //public void saveBolsaTabajo(@RequestParam("registro") String strRegistro, @RequestParam("ficheros") MultipartFile[] files) throws IOException {
+    public void saveBolsaTabajo(@RequestBody MultipartFile files) throws IOException {
 
-        // System.out.println(bolsa);
 
-        MultipartFile[] files = multiFileMap.values().stream().flatMap(values-> values.stream()).toArray(MultipartFile[] :: new);
+        /*for (MultipartFile multipartFile : files){
+            String nombreArchivo = StringUtils.cleanPath(multipartFile.getOriginalFilename());
+            System.out.println(nombreArchivo);
+        }*/
+        /*String mensaje = "";
+        List<String> fileNames = new ArrayList<>();
 
-        System.out.println(files);
+        String uploadDir = "Documentos1/";
 
-        Gson gson = new Gson();
-
-        Registro registro = gson.fromJson(strRegistro, Registro.class);
-
-        String uploadDir = "Documentos/"+registro.getNombre();
-
-        System.out.println(registro.getNombre());
-        System.out.println(registro.getApellidos());
-
-        
-        for(MultipartFile multipartFile: files){
+        for (MultipartFile multipartFile : files) {
             String filename = StringUtils.cleanPath(multipartFile.getOriginalFilename());
-            System.out.println("REGISTRO DEL FOR =======> "+filename);
-            registro.setImagen(filename);
-
-            System.out.println(registro.getImagen());
+            //System.out.println("REGISTRO DEL FOR =======> " + filename);
 
             FileUploadtil.SaveFile(uploadDir, filename, multipartFile);
-        }
+        }*/
 
     }
 
