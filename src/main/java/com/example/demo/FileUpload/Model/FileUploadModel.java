@@ -1,16 +1,15 @@
-package com.example.demo;
+package com.example.demo.FileUpload.Model;
 
-public class Expediente {
-
+public class FileUploadModel {
     private String nombreArchivo;
     private String url;
-    private String directorio;
+    private String nombre;
     private String archivo;
 
-    public Expediente(String nombreArchivo, String url, String directorio, String archivo) {
+    public FileUploadModel(String nombreArchivo, String url, String nombre, String archivo) {
         this.nombreArchivo = nombreArchivo;
         this.url = url;
-        this.directorio = directorio;
+        this.nombre = nombre;
         this.archivo = archivo;
     }
 
@@ -30,12 +29,12 @@ public class Expediente {
         this.url = url;
     }
 
-    public String getDirectorio() {
-        return directorio;
+    public String getNombre() {
+        return nombre;
     }
 
     public void setDirectorio(String directorio) {
-        this.directorio = directorio;
+        this.nombre = directorio;
     }
 
     public String getArchivo() {
